@@ -1,10 +1,16 @@
 .container {
   max-width: 900px;
   margin: auto;
-  background: white;
+  background: rgb(5, 68, 60);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+h2{
+  color: white;
+}
+label{
+  color: white;
 }
 
 form {
@@ -30,12 +36,12 @@ button {
 }
 
 button[type="submit"] {
-  background: green;
+  background: black;
   color: white;
 }
 
 button[type="button"] {
-  background: red;
+  background: black;
   color: white;
 }
 
@@ -51,7 +57,7 @@ th, td {
 }
 
 th {
-  background: #4CAF50;
+  background: black;
   color: white;
 }
 
@@ -62,12 +68,16 @@ td button {
 }
 
 td button:first-child {
-  background: #2196F3;
+  background: #20c997;
   color: white;
 }
 
 td button:last-child {
-  background: #f44336;
+  background: #e63946;
   color: white;
+}
+.error {
+  color: red;
+  font-size: 12px;
 }
 
