@@ -45,11 +45,9 @@ export class AppComponent {
     if (form.invalid) return;
 
     if (this.editId === null) {
-      // Add
       this.model.id = Date.now();
       this.employees.push({ ...this.model });
     } else {
-      // Update
       const index = this.employees.findIndex(e => e.id === this.editId);
       if (index !== -1) {
         this.employees[index] = { ...this.model, id: this.editId };
