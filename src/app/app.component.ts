@@ -23,6 +23,7 @@ export class AppComponent {
   titles = ['Mr', 'Mrs', 'Miss', 'Dr'];
   employees: Employee[] = [];
   editId: number | null = null;
+  emailExists = false; // <-- new flag
 
   model: Employee = {
     id: 0,
@@ -41,8 +42,15 @@ export class AppComponent {
     }
   }
 
+  checkDuplicateEmail() {
+    this.emailExists = this.employees.some(emp =>
+      emp.email.toLowerCase() === (this.model.email || '').toLowerCase() &&
+      emp.id !== this.editId
+    );
+  }
+
   saveEmployee(form: NgForm) {
-    if (form.invalid) return;
+    if (form.invalid || this.emailExists) return;
 
     if (this.editId === null) {
       this.model.id = Date.now();
@@ -57,11 +65,13 @@ export class AppComponent {
 
     this.updateLocalStorage();
     form.resetForm();
+    this.emailExists = false;
   }
 
   editEmployee(employee: Employee) {
     this.model = { ...employee };
     this.editId = employee.id;
+    this.emailExists = false;
   }
 
   deleteEmployee(id: number) {
@@ -73,6 +83,3 @@ export class AppComponent {
     localStorage.setItem('employees', JSON.stringify(this.employees));
   }
 }
-
-
-
